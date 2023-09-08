@@ -41,7 +41,7 @@ Toolkit.run(
       `Activity for ${GH_USERNAME}, ${events.data.length} events found.`
     )
 
-    const content = events.data
+    let content = events.data
       // Filter out any boring activity
       .filter(event => serializers.hasOwnProperty(event.type))
       // We only have five lines to work with
@@ -52,6 +52,10 @@ Toolkit.run(
       .map(truncate)
       // Join items to one string
       .join('\n')
+
+    if (content.trim().length <= 0) {
+      content = 'No recent activity.'
+    }
 
     const box = new GistBox({ id: GIST_ID, token: GH_PAT })
     try {
