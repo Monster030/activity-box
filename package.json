@@ -6,32 +6,31 @@
   "license": "ISC",
   "scripts": {
     "test": "jest --coverage",
-    "format": "prettier --write ./index.js"
+    "format": "prettier --write ./index.js",
+    "prepare": "husky install"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/JasonEtco/activity-box.git"
   },
   "dependencies": {
-    "actions-toolkit": "^4.0.0",
-    "dotenv": "^8.2.0",
+    "actions-toolkit": "^6.0.1",
+    "dotenv": "^16.3.1",
     "gist-box": "^0.3.1"
   },
   "devDependencies": {
-    "husky": "^4.2.5",
-    "jest": "^26.0.1",
+    "husky": "^8.0.0",
+    "jest": "^26.6.3",
     "nock": "^12.0.3",
-    "prettier": "^2.0.5",
-    "pretty-quick": "^2.0.1"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "pretty-quick --staged"
-    }
+    "prettier": "^3.0.3",
+    "lint-staged": "^14.0.1"
   },
   "jest": {
     "setupFiles": [
       "<rootDir>/tests/setup.js"
     ]
+  },
+  "lint-staged": {
+    "*.{js,ts,json}": "prettier --write"
   }
 }
